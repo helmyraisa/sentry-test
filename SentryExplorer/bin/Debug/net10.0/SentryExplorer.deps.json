@@ -1,0 +1,77 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "SentryExplorer/1.0.0": {
+        "dependencies": {
+          "Sentry.AspNetCore": "6.6.0"
+        },
+        "runtime": {
+          "SentryExplorer.dll": {}
+        }
+      },
+      "Sentry/6.6.0": {
+        "runtime": {
+          "lib/net10.0/Sentry.dll": {
+            "assemblyVersion": "6.6.0.0",
+            "fileVersion": "6.6.0.0"
+          }
+        }
+      },
+      "Sentry.AspNetCore/6.6.0": {
+        "dependencies": {
+          "Sentry.Extensions.Logging": "6.6.0"
+        },
+        "runtime": {
+          "lib/net10.0/Sentry.AspNetCore.dll": {
+            "assemblyVersion": "6.6.0.0",
+            "fileVersion": "6.6.0.0"
+          }
+        }
+      },
+      "Sentry.Extensions.Logging/6.6.0": {
+        "dependencies": {
+          "Sentry": "6.6.0"
+        },
+        "runtime": {
+          "lib/net10.0/Sentry.Extensions.Logging.dll": {
+            "assemblyVersion": "6.6.0.0",
+            "fileVersion": "6.6.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SentryExplorer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Sentry/6.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1D3xo3P9Y94VQN3RoV/86XqgtylHp1pdeEml3/UB649BrzJeZ/pqO/o8YgJ5g+GqpMQiGI09yjAI7s5ff2A1IA==",
+      "path": "sentry/6.6.0",
+      "hashPath": "sentry.6.6.0.nupkg.sha512"
+    },
+    "Sentry.AspNetCore/6.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MzS1695uLEYN8sfjmqaBYMg87WAB+YaQjlI/IQp9FVC1D3Kimv+SqptvM5Xzg6tjZZ0NR6AhPTdWs1oP145N5w==",
+      "path": "sentry.aspnetcore/6.6.0",
+      "hashPath": "sentry.aspnetcore.6.6.0.nupkg.sha512"
+    },
+    "Sentry.Extensions.Logging/6.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6d5/MLfqfIy2uIlKIFJVtSpT3Z0lY3VlpFPqBP34E1COX1qI+AnrsRKa9v7+wedZDKmBmyTGGzwUZWmmfJfGaw==",
+      "path": "sentry.extensions.logging/6.6.0",
+      "hashPath": "sentry.extensions.logging.6.6.0.nupkg.sha512"
+    }
+  }
+}
