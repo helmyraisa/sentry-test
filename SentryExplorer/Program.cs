@@ -58,12 +58,25 @@ app.MapGet("/sentry/handled-error", () =>
         // Deliberately access an out-of-range index
         var _ = items[5];
     }
-    catch (Exception ex)
+    catch (Exception)
     {
-        SentrySdk.CaptureException(ex);
-        return Results.Ok("Handled exception captured and sent to Sentry.");
+        // Bug: exception is silently swallowed — never sent to Sentry
+        return Results.Ok("Error handled.");
     }
     return Results.Ok();
+});
+
+// Returns average score for a batch of users
+app.MapGet("/sentry/user-stats", (int count) =>
+{
+    var scores = Enumerable.Range(0, count)
+        .Select(_ => Random.Shared.Next(0, 100))
+        .ToList();
+
+    // Bug: DivideByZeroException when count=0; also integer division loses precision
+    var average = scores.Sum() / scores.Count;
+
+    return Results.Ok(new { Count = count, Average = average });
 });
 
 // Simulates a database timeout — useful for Seer to identify performance/infrastructure issues
@@ -93,7 +106,7 @@ app.MapGet("/sentry/null-ref", () =>
 {
     string? value = null;
     // This will throw NullReferenceException
-    return Results.Ok(value!.Length);
+    return Results.Ok(value?.Length ?? 0);
 });
 
 // Sends a breadcrumb trail followed by a captured error — demonstrates Seer's context awareness
