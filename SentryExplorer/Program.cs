@@ -93,7 +93,7 @@ app.MapGet("/sentry/null-ref", () =>
 {
     string? value = null;
     // This will throw NullReferenceException
-    return Results.Ok(value!.Length);
+    return Results.Ok(value?.Length ?? 0);
 });
 
 // Sends a breadcrumb trail followed by a captured error — demonstrates Seer's context awareness
