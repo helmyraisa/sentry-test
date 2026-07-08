@@ -66,27 +66,6 @@ app.MapGet("/sentry/handled-error", () =>
     return Results.Ok();
 });
 
-// Simulates a database timeout — useful for Seer to identify performance/infrastructure issues
-app.MapGet("/sentry/db-timeout", async () =>
-{
-    try
-    {
-        // Simulate a slow DB call that times out
-        await Task.Delay(100);
-        throw new TimeoutException("Simulated database timeout after 100ms. Connection pool exhausted.");
-    }
-    catch (Exception ex)
-    {
-        SentrySdk.ConfigureScope(scope =>
-        {
-            scope.SetTag("component", "database");
-            scope.SetExtra("query", "SELECT * FROM orders WHERE status = 'pending'");
-            scope.SetExtra("timeout_ms", 100);
-        });
-        SentrySdk.CaptureException(ex);
-        return Results.Problem("Database timeout captured and sent to Sentry.");
-    }
-});
 
 // Simulates a null reference chain — useful for Seer root cause analysis
 app.MapGet("/sentry/null-ref", () =>
